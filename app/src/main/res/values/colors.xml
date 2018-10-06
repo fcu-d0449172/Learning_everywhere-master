@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#4db6ac</color>
+    <color name="colorPrimaryDark">#00897b</color>
+    <color name="colorAccent">#e07a7c</color>
+
+    <!--<color name="colorTextNormal">#ffffff</color>-
+    <color name="colorTextWeak">#80ffffff</color>-->
+    <color name="colorTextNormal">#444444</color>
+    <color name="colorTextWeak">#80ffffff</color>
+
+    <color name="colorOverlay">#60000000</color>
+    <color name="myBarColor">#ff33b5e5</color>
+</resources>

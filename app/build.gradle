@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+kotlin.experimental.coroutines 'enable'
+
+android {
+    compileSdkVersion 27
+    //android {compileOptions.encoding = "GBK"}
+//    compileOptions {
+//        encoding "Big5"
+//    }
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+    defaultConfig {
+        applicationId "com.geckour.findout"
+        minSdkVersion 24
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        dataBinding.enabled = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    def android_support_version = '27.1.1'
+    def coroutines_version = '0.19.3'
+    def stetho_version = '1.5.0'
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.android.support:appcompat-v7:$android_support_version"
+    implementation "com.android.support:design:$android_support_version"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+
+    // Logging
+    implementation 'com.jakewharton.timber:timber:4.6.0'
+
+    // Inspect
+    implementation "com.facebook.stetho:stetho:$stetho_version"
+    implementation "com.facebook.stetho:stetho-okhttp3:$stetho_version"
+
+    // Data Binding
+
+
+    // TensorFlow
+    implementation 'org.tensorflow:tensorflow-android:1.8.0'
+
+    // Pinch-enabled ImageView
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
+}
