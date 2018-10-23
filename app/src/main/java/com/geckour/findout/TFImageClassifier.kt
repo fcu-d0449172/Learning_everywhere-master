@@ -37,7 +37,7 @@ class TFImageClassifier(
                         }
                     }
         } catch (e: IOException) {
-            throw RuntimeException("Cannot read label file.", e)
+            throw RuntimeException("無法讀取資料庫檔案", e)
         }
 
         inferenceInterface = TensorFlowInferenceInterface(assetManager, modelFileName)
@@ -66,7 +66,7 @@ class TFImageClassifier(
         inferenceInterface.fetch(outputName, outputs)
 
         return outputs.mapIndexed { i, f ->
-            Recognition(i.toString(), if (labels.size > i) labels[i] else "Unknown", f, null)
+            Recognition(i.toString(), if (labels.size > i) labels[i] else "未知", f, null)
         }.sortedByDescending { it.confidence }
     }
 

@@ -1,0 +1,2 @@
+用tensorflow訓練好的花朵模型資料會放到graph.pb中
+而labels來放訓練好的花朵資料

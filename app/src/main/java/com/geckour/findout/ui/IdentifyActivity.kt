@@ -345,7 +345,7 @@ class IdentifyActivity : AppCompatActivity() {
             Timber.d("camera id: $this")
             try {
                 if (cameraLock.tryAcquire(2500, TimeUnit.MILLISECONDS).not()) {
-                    throw RuntimeException("Time out waiting to lock camera on opening.")
+                    throw RuntimeException("關閉相機時等待時間過長")
                 }
 
                 val stateCallback = object : CameraDevice.StateCallback() {
@@ -363,7 +363,7 @@ class IdentifyActivity : AppCompatActivity() {
 
                     override fun onError(camera: CameraDevice, error: Int) {
                         onDisconnected(camera)
-                        Toast.makeText(this@IdentifyActivity, "Error: Camera state turn in error [$error].", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@IdentifyActivity, "相機狀態有問題，請嘗試重啟 [$error].", Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -381,7 +381,7 @@ class IdentifyActivity : AppCompatActivity() {
     private fun closeCamera() {
         if (cameraLock.tryAcquire(2500, TimeUnit.MILLISECONDS).not()) {
             cameraLock.release()
-            throw RuntimeException("Time out waiting to lock camera on closing.")
+            throw RuntimeException("關閉相機時等待時間過長")
         }
 
         try {
@@ -509,7 +509,7 @@ class IdentifyActivity : AppCompatActivity() {
             bigEnough.isNotEmpty() -> bigEnough.minBy { it.width * it.height } ?: this[0]
             notBigEnough.isNotEmpty() -> notBigEnough.maxBy { it.width * it.height } ?: this[0]
             else -> {
-                Timber.e("Error: Couldn't find any suitable cameraPreview size.")
+                Timber.e("錯誤: 找不到合適的相機預覽尺寸")
                 this[0]
             }
         }

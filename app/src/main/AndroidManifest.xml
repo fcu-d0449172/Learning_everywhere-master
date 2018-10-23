@@ -4,11 +4,11 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CAMERA" /><!--獲得相機使用權限-->
+    <uses-permission android:name="android.permission.WAKE_LOCK" /><!--讓程式在後台保持運作-->
 
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature android:name="android.hardware.camera" /><!--控制相機的api，可防止app被安裝在沒有相機的裝置上-->
+    <uses-feature android:name="android.hardware.camera.autofocus" /><!--自動對焦-->
 
     <application
         android:name=".App"
@@ -20,14 +20,15 @@
         android:supportsRtl="true"
         android:testOnly="false"
         android:theme="@style/AppTheme">
-
+        <!--20:此app支援由右至左的布局方式-->
+        <!--21:若為true，則apk無法正常安裝-->
 
         <activity
             android:name=".ui.IdentifyActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"><!--app畫面為縱向-->
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN" /><!--決定app最先啟動的activity-->
+                <category android:name="android.intent.category.LAUNCHER" /><!--決定app是否顯示在應用列表裡-->
             </intent-filter>
         </activity>
 
